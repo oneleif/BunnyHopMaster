@@ -4,27 +4,30 @@ using UnityEngine;
 using UnityEngine.UI;
 using System;
 
-public class PlayerUI : MonoBehaviour {
+public class PlayerUI : MonoBehaviour
+{
     public bool isPaused;
 
     [SerializeField]
-    GameObject inGameUI;
+    private GameObject inGameUI;
 
     [SerializeField]
-    PauseMenu pauseMenu;
+    private PauseMenu pauseMenu;
 
     [SerializeField]
-    WinMenu winMenu;
+    private WinMenu winMenu;
 
     public Image crossHair;
 
-    void Start () {
+    private void Start()
+    {
         inGameUI.SetActive(true);
         pauseMenu.gameObject.SetActive(false);
         winMenu.gameObject.SetActive(false);
     }
-	
-	void Update () {
+
+    private void Update()
+    {
         // Don't let the player pause the game if they are in the win menu
         // This would let the player unpause and play during the win menu
         if (GameManager.Instance.didWinCurrentLevel)
@@ -32,7 +35,8 @@ public class PlayerUI : MonoBehaviour {
             return;
         }
 
-        if (Input.GetKeyDown(KeyCode.Escape)) {
+        if (Input.GetKeyDown(HotKeyManager.Instance.GetKeyFor(PlayerConstants.PauseMenu)))
+        {
             if (isPaused)
             {
                 UnPause();
@@ -41,6 +45,10 @@ public class PlayerUI : MonoBehaviour {
             {
                 Pause();
             }
+        }
+        if (Input.GetKeyDown(HotKeyManager.Instance.GetKeyFor(PlayerConstants.NextLevel)))
+        {
+            winMenu.NextLevel();
         }
     }
 
@@ -78,7 +86,7 @@ public class PlayerUI : MonoBehaviour {
         winMenu.bestTimeText.text = "Best time: " + time.ToString(PlayerConstants.levelCompletionTimeFormat);
     }
 
-    string GetTimeString(float completionTime)
+    private string GetTimeString(float completionTime)
     {
         TimeSpan time = TimeSpan.FromSeconds(completionTime);
         return time.ToString(PlayerConstants.levelCompletionTimeFormat);

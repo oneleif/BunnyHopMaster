@@ -32,6 +32,7 @@ public static class PlayerConstants
     public static float CrouchingBoxCastDistance = 0.11f;
 
     //HotKeys
+
     public static string Forward = "Forward";
     public static string ForwardDefault = "W";
 
@@ -62,8 +63,18 @@ public static class PlayerConstants
     public static string MouseX = "Mouse X";
     public static string MouseY = "Mouse Y";
 
+    public static string WinMenu = "WinMenu";
+    public static string WinMenuDefault = "O";
+
+    public static string NextLevel = "NextLevel";
+    public static string NextLevelDefault = "L";
+
+    public static string PauseMenu = "PauseMenu";
+    public static string PauseMenuDefault = "Escape";
+
     // Game Constants
     public static int BuildSceneIndex = 0;
+
     public static Vector3 PlayerSpawnOffset = new Vector3(0, 2, 0);
     public static string levelCompletionTimeFormat = "hh':'mm':'ss'.'fff";
     public static int PlayerLayer = 12;

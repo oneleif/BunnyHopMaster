@@ -3,17 +3,18 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class HotKeyManager : MonoBehaviour {
+public class HotKeyManager : MonoBehaviour
+{
     [SerializeField]
     private Dictionary<string, KeyCode> keys = new Dictionary<string, KeyCode>();
+
     private Dictionary<string, KeyCode> defaults = new Dictionary<string, KeyCode>();
 
     public static HotKeyManager Instance;
-    
 
     private void Awake()
     {
-        if(Instance != null)
+        if (Instance != null)
         {
             Destroy(gameObject);
         }
@@ -54,6 +55,9 @@ public class HotKeyManager : MonoBehaviour {
         LoadSavedKey(PlayerConstants.ResetLevel, PlayerConstants.ResetLevelDefault);
         LoadSavedKey(PlayerConstants.Portal1, PlayerConstants.Portal1Default);
         LoadSavedKey(PlayerConstants.Portal2, PlayerConstants.Portal2Default);
+        LoadSavedKey(PlayerConstants.WinMenu, PlayerConstants.WinMenuDefault);
+        LoadSavedKey(PlayerConstants.NextLevel, PlayerConstants.NextLevelDefault);
+        LoadSavedKey(PlayerConstants.PauseMenu, PlayerConstants.PauseMenuDefault);
     }
 
     public void LoadSavedKey(string keyName, string defaultValue)
@@ -75,7 +79,7 @@ public class HotKeyManager : MonoBehaviour {
     {
         keys = new Dictionary<string, KeyCode>(defaults);
 
-        foreach(KeyValuePair<String, KeyCode> entry in keys)
+        foreach (KeyValuePair<String, KeyCode> entry in keys)
         {
             PlayerPrefs.SetString(entry.Key, entry.Value.ToString());
         }
@@ -92,6 +96,9 @@ public class HotKeyManager : MonoBehaviour {
         AddDefaultKey(PlayerConstants.ResetLevel, PlayerConstants.ResetLevelDefault);
         AddDefaultKey(PlayerConstants.Portal1, PlayerConstants.Portal1Default);
         AddDefaultKey(PlayerConstants.Portal2, PlayerConstants.Portal2Default);
+        AddDefaultKey(PlayerConstants.WinMenu, PlayerConstants.WinMenuDefault);
+        AddDefaultKey(PlayerConstants.NextLevel, PlayerConstants.NextLevelDefault);
+        AddDefaultKey(PlayerConstants.PauseMenu, PlayerConstants.PauseMenuDefault);
     }
 
     public void AddDefaultKey(string keyName, string defaultValue)

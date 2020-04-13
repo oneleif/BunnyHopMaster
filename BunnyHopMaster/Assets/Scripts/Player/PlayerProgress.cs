@@ -34,7 +34,7 @@ public class PlayerProgress : MonoBehaviour
             return;
         }
 
-        if (Input.GetKeyDown(KeyCode.R))
+        if (Input.GetKeyDown(HotKeyManager.Instance.GetKeyFor(PlayerConstants.ResetLevel)))
         {
             Respawn();
         }
@@ -46,7 +46,7 @@ public class PlayerProgress : MonoBehaviour
 
         if (currentCheckpoint != null && !GameManager.Instance.didWinCurrentLevel)
         {
-            if (currentCheckpoint.level == GameManager.GetCurrentLevel().numberOfCheckpoints)
+            if (currentCheckpoint.level == GameManager.GetCurrentLevel().numberOfCheckpoints || Input.GetKeyDown(HotKeyManager.Instance.GetKeyFor(PlayerConstants.WinMenu)))
             {
                 GameManager.FinishedLevel();
                 playerUI.ShowWinScreen();
