@@ -13,7 +13,7 @@ public class GameManager : MonoBehaviour
     public float currentCompletionTime;
     public bool didWinCurrentLevel;
 
-    void Awake()
+    private void Awake()
     {
         if (FindObjectsOfType(GetType()).Length > 1)
         {
@@ -32,7 +32,7 @@ public class GameManager : MonoBehaviour
         DontDestroyOnLoad(this.gameObject);
     }
 
-    void Update()
+    private void Update()
     {
         if (!didWinCurrentLevel)
         {
@@ -50,7 +50,7 @@ public class GameManager : MonoBehaviour
         SceneManager.sceneLoaded -= OnSceneLoaded;
     }
 
-    void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
         currentLevelBuildIndex = scene.buildIndex;
         currentCompletionTime = 0;
