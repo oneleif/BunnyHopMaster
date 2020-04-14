@@ -38,7 +38,7 @@ public class PlayerProgress : MonoBehaviour
 
         if (currentCheckpoint != null && !GameManager.Instance.didWinCurrentLevel)
         {
-            if (currentCheckpoint.level == GameManager.GetCurrentLevel().numberOfCheckpoints || Input.GetKeyDown(HotKeyManager.Instance.GetKeyFor(PlayerConstants.WinMenu)))
+            if (currentCheckpoint.level == GameManager.GetCurrentLevel().numberOfCheckpoints)
             {
                 GameManager.FinishedLevel();
                 playerUI.ShowWinScreen();

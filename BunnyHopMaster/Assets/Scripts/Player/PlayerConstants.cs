@@ -63,12 +63,6 @@ public static class PlayerConstants
     public static string MouseX = "Mouse X";
     public static string MouseY = "Mouse Y";
 
-    public static string WinMenu = "WinMenu";
-    public static string WinMenuDefault = "O";
-
-    public static string NextLevel = "NextLevel";
-    public static string NextLevelDefault = "L";
-
     public static string PauseMenu = "PauseMenu";
     public static string PauseMenuDefault = "Escape";
 

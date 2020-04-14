@@ -9,13 +9,13 @@ public class PlayerUI : MonoBehaviour
     public bool isPaused;
 
     [SerializeField]
-    private GameObject inGameUI;
+    GameObject inGameUI;
 
     [SerializeField]
-    private PauseMenu pauseMenu;
+    PauseMenu pauseMenu;
 
     [SerializeField]
-    private WinMenu winMenu;
+    WinMenu winMenu;
 
     public Image crossHair;
 
@@ -45,10 +45,6 @@ public class PlayerUI : MonoBehaviour
             {
                 Pause();
             }
-        }
-        if (Input.GetKeyDown(HotKeyManager.Instance.GetKeyFor(PlayerConstants.NextLevel)))
-        {
-            winMenu.NextLevel();
         }
     }
 

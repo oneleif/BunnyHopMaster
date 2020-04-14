@@ -13,7 +13,7 @@ public class GameManager : MonoBehaviour
     public float currentCompletionTime;
     public bool didWinCurrentLevel;
 
-    private void Awake()
+    void Awake()
     {
         if (FindObjectsOfType(GetType()).Length > 1)
         {

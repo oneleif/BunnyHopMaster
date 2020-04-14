@@ -55,8 +55,6 @@ public class HotKeyManager : MonoBehaviour
         LoadSavedKey(PlayerConstants.ResetLevel, PlayerConstants.ResetLevelDefault);
         LoadSavedKey(PlayerConstants.Portal1, PlayerConstants.Portal1Default);
         LoadSavedKey(PlayerConstants.Portal2, PlayerConstants.Portal2Default);
-        LoadSavedKey(PlayerConstants.WinMenu, PlayerConstants.WinMenuDefault);
-        LoadSavedKey(PlayerConstants.NextLevel, PlayerConstants.NextLevelDefault);
         LoadSavedKey(PlayerConstants.PauseMenu, PlayerConstants.PauseMenuDefault);
     }
 
@@ -96,8 +94,6 @@ public class HotKeyManager : MonoBehaviour
         AddDefaultKey(PlayerConstants.ResetLevel, PlayerConstants.ResetLevelDefault);
         AddDefaultKey(PlayerConstants.Portal1, PlayerConstants.Portal1Default);
         AddDefaultKey(PlayerConstants.Portal2, PlayerConstants.Portal2Default);
-        AddDefaultKey(PlayerConstants.WinMenu, PlayerConstants.WinMenuDefault);
-        AddDefaultKey(PlayerConstants.NextLevel, PlayerConstants.NextLevelDefault);
         AddDefaultKey(PlayerConstants.PauseMenu, PlayerConstants.PauseMenuDefault);
     }
 
