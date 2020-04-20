@@ -6,6 +6,7 @@ public class PlayerMovement : MonoBehaviour
 {
     [Tooltip("Red line is current velocity, blue is the new direction")]
     public bool showDebugGizmos = false;
+
     public LayerMask layersToIgnore;
     public BoxCollider myCollider;
     public CameraMove cameraMove;
@@ -18,10 +19,13 @@ public class PlayerMovement : MonoBehaviour
 
     [SerializeField]
     private bool grounded;
+
     [SerializeField]
     private bool surfing;
+
     [SerializeField]
     private bool crouching;
+
     [SerializeField]
     private bool wasCrouching;
 
@@ -121,7 +125,7 @@ public class PlayerMovement : MonoBehaviour
             maxDistance: PlayerConstants.BoxCastDistance,
             layerMask: layersToIgnore
             );
-        
+
         var wasGrounded = grounded;
         var validHits = hits
             .ToList()
@@ -132,7 +136,7 @@ public class PlayerMovement : MonoBehaviour
             .Where(hit => hit.point.y < transform.position.y);
 
         grounded = ConfirmGrounded(validHits);
-        
+
         if (grounded)
         {
             Debug.Log("grounded");
@@ -164,7 +168,7 @@ public class PlayerMovement : MonoBehaviour
 
     private bool ConfirmGrounded(IEnumerable<RaycastHit> hits)
     {
-        if(hits.Count() > 0)
+        if (hits.Count() > 0)
         {
             Vector3 extents = PlayerConstants.BoxCastExtents;
             if (crouching)
@@ -172,7 +176,7 @@ public class PlayerMovement : MonoBehaviour
                 extents = PlayerConstants.CrouchingBoxCastExtents;
             }
 
-            // We have to manually check if there is a collision, because boxcastall 
+            // We have to manually check if there is a collision, because boxcastall
             // doesn't return the correct information when already colliding
             var overlappingColliders = Physics.OverlapBox(
                 center: myCollider.bounds.center,
@@ -187,7 +191,7 @@ public class PlayerMovement : MonoBehaviour
                     continue;
                 }
 
-                if(collider.transform.position.y < transform.position.y)
+                if (collider.transform.position.y < transform.position.y)
                 {
                     return true;
                 }
@@ -280,7 +284,7 @@ public class PlayerMovement : MonoBehaviour
         var wishSpd = Mathf.Min(wishSpeed, PlayerConstants.AirAccelerationCap);
         var currentSpeed = Vector3.Dot(newVelocity, wishDir);
         var speedToAdd = wishSpd - currentSpeed;
-        
+
         if (speedToAdd <= 0)
         {
             return;
@@ -393,5 +397,4 @@ public class PlayerMovement : MonoBehaviour
             }
         }
     }
-
 }

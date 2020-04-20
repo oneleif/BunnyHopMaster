@@ -23,7 +23,6 @@ public class PortalPlacement : MonoBehaviour
     private const string portalTag = "Portal";
     private bool isPortalLevel = false;
 
-
     private void Awake()
     {
         cameraMove = GetComponent<CameraMove>();
@@ -88,6 +87,7 @@ public class PortalPlacement : MonoBehaviour
                 var cameraRotation = cameraMove.TargetRotation;
 
                 var portalRight = cameraRotation * Vector3.right;
+                Debug.Log(portalRight);
 
                 if (Mathf.Abs(portalRight.x) >= Mathf.Abs(portalRight.z))
                 {
@@ -102,6 +102,11 @@ public class PortalPlacement : MonoBehaviour
                 var portalUp = -Vector3.Cross(portalRight, portalForward);
 
                 var portalRotation = Quaternion.LookRotation(portalForward, portalUp);
+
+                if (Quaternion.Angle(cameraRotation, portalRotation) > 100f)
+                {
+                    portalRotation = Quaternion.LookRotation(portalForward, -portalUp);
+                }
 
                 portals.Portals[portalID].PlacePortal(hit.collider, hit.point, portalRotation);
 
