@@ -46,12 +46,19 @@ public class GameManager : MonoBehaviour
             if (!SteamClient.IsValid)
             {
                 SteamClient.Init(AppId, true);
+                StartCoroutine(LoadPrefs());
             }
         }
         catch (System.Exception e)
         {
             Debug.LogError("Could not connect to steam " + e.Message);
         }
+    }
+
+    IEnumerator LoadPrefs()
+    {
+        yield return new WaitForSeconds(2);
+        SteamPlayerPrefs.LoadPlayerPrefs();
     }
 
     void Update()
