@@ -71,6 +71,7 @@ public class GameManager : MonoBehaviour
 
     private void OnApplicationQuit()
     {
+        SteamPlayerPrefs.SavePlayerPrefs();
         Steamworks.SteamClient.Shutdown();
     }
 

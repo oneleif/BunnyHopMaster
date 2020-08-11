@@ -10,7 +10,7 @@ public class SteamPlayerPrefs : MonoBehaviour
 {
     public static SteamPlayerPrefs Instance { get; private set; }
     private const string prefsFileName = "prefs.txt";
-    private PlayerPrefModel playerPrefModel;
+    public PlayerPrefModel playerPrefModel;
 
     void Awake()
     {
