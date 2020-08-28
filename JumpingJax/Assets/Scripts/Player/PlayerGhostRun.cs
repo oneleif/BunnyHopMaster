@@ -14,6 +14,7 @@ public class PlayerGhostRun : MonoBehaviour
     private Level currentLevel;
     private int currentDataIndex = 0;
 
+    private bool showGhost;
 
     private const float ghostRunSaveInterval = 0.05f;
 
@@ -26,6 +27,7 @@ public class PlayerGhostRun : MonoBehaviour
         {
             ghostRunner = Instantiate(ghostRunnerPrefab);
         }
+        
         ghostRunner.SetActive(false);
     }
 
@@ -37,7 +39,7 @@ public class PlayerGhostRun : MonoBehaviour
         }
 
         RecordCurrentRunData();
-        UpdateGhost();
+        if(showGhost) UpdateGhost();
     }
 
     public void RestartRun()
@@ -46,6 +48,7 @@ public class PlayerGhostRun : MonoBehaviour
         ghostRunnerTimer = 0;
         currentDataIndex = 0;
         currentRunData = new List<Vector3>();
+        
     }
 
     private void UpdateGhost()

@@ -28,6 +28,10 @@ public class OptionsPreferencesManager
     public const string cameraFOVKey = "CameraFOV";
     public const int defaultCameraFOV = 90;
 
+    public const string showGhostKey = "ShowGhost";
+    public const int defaultshowGhost = 1;
+
+
     public static int GetResolutionWidth()
     {
         return PlayerPrefs.GetInt(resolutionWidthKey, defaultResolutionWidth);
@@ -103,5 +107,15 @@ public class OptionsPreferencesManager
     public static void SetCameraFOV(int fieldOfViewLevel)
     {
         PlayerPrefs.SetInt(cameraFOVKey, fieldOfViewLevel);
+    }
+
+    public static bool GetShowGhost()
+    {
+        return (PlayerPrefs.GetInt(showGhostKey, defaultshowGhost) != 0);
+    }
+
+    public static bool SetShowGhost(bool showGhost)
+    {
+        return (PlayerPrefs.GetInt(showGhostKey, showGhost ? 1 : 0) != 0);
     }
 }
