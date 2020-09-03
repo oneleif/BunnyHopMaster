@@ -40,6 +40,11 @@ public class InGameUI : MonoBehaviour
         {
             LoadNextTutorial();
         }
+        else if (Input.GetKey(PlayerConstants.Modifier) && Input.GetKeyUp(PlayerConstants.InGameUI))
+        {
+            ToggleInGameUI(); 
+        }
+        
 
     }
 
@@ -54,6 +59,17 @@ public class InGameUI : MonoBehaviour
         else
         {
             tutorialPane.SetActive(false);
+        }
+    }
+
+    private void ToggleInGameUI()
+    {
+        foreach (Transform _transform in transform)
+        {
+            if (_transform.gameObject != tutorialPane)
+            {
+                _transform.gameObject.SetActive(!_transform.gameObject.activeSelf); 
+            }
         }
     }
 }
